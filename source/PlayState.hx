@@ -69,19 +69,22 @@ class PlayState extends FlxState
 		_cam2.bgColor = FlxColor.WHITE;
 		_cam3.bgColor = FlxColor.WHITE;
 
-		// Set camera positions and zoom.
+		// Set camera positions, extents, and zoom.
 		_cam1.zoom = Reg.CAM1ZOOM;
 		_cam1.scroll.x = 0.5 * (_wWidth - _wWidth /  Reg.CAM1ZOOM);
 		_cam1.scroll.y = _wHeight - _wHeight / Reg.CAM1ZOOM;
-		_cam2.width = Math.floor(FlxG.width / Reg.CAM1ZOOM);
+		_cam1.width = Math.floor(FlxG.width / Reg.CAM1ZOOM);
+		_cam1.height = Math.floor((FlxG.height / 3) / Reg.CAM1ZOOM);
 		_cam2.zoom = Reg.CAM2ZOOM;
 		_cam2.scroll.x = 0.5 * (_wWidth - _wWidth /  Reg.CAM2ZOOM);
 		_cam2.scroll.y = _wHeight - _wHeight / Reg.CAM2ZOOM;
 		_cam2.width = Math.floor(FlxG.width / Reg.CAM2ZOOM);
+		_cam2.height = Math.floor((FlxG.height / 3) / Reg.CAM2ZOOM);		
 		_cam3.zoom = Reg.CAM3ZOOM;
 		_cam3.scroll.x = 0.5 * (_wWidth - _wWidth /  Reg.CAM3ZOOM);
 		_cam3.scroll.y = _wHeight - _wHeight / Reg.CAM3ZOOM;
 		_cam3.width = Math.floor(FlxG.width / Reg.CAM3ZOOM);
+		_cam3.height = Math.floor((FlxG.height /  3) / Reg.CAM3ZOOM);
 		//_cam2.setBounds(_cam2.scroll.x, _cam2.scroll.y,
 		//                _cam2.scroll.x + _wWidth / _cam2Zoom,
 		//                _cam2.scroll.y + _wHeight / _cam2Zoom);
