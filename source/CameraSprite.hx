@@ -7,13 +7,27 @@ import flixel.FlxSprite;
 
 class CameraSprite extends FlxSprite
 {
-	private var _camId:Int;
+	// Array of camera ids we do *not* want to draw this sprite on.
 	private var _camIds:Array<Int>;
 
+	// cIds is an array of camera IDs (the flixel ID of the camera object) that
+	// should draw the object.
 	public function new(x:Int, y:Int, ?cIds:Array<Int>)
 	{
-		// If cIds is null, we'll draw the sprite on all cameras
-		_camIds = cIds;
+		// Build the array of camera ids that we do *not* want to draw this
+		// sprite on.  If cIds is null, we'll draw the sprite on all cameras.
+		if (cIds != null)
+		{
+			_camIds = new Array<Int>();
+			for (i in 0...FlxG.cameras.list.length)
+			{
+				if (!Lambda.has(cIds, i))
+				{
+					_camIds.push(i);
+				}
+			}
+		}
+
 		super(x, y);
 	}
 	

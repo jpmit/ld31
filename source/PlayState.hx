@@ -80,12 +80,13 @@ class PlayState extends FlxState
 		
 		_enemies = new FlxTypedGroup<Enemy>();
 		_enemies.add(new Enemy(0, 170));
+		// appear on camera 1 only
 		_enemies.add(new Enemy(0, 160, [1]));		
 		add(_enemies);
 
-		trace(_cam1.ID);
-		trace(_cam2.ID);
-		trace(_cam3.ID);		
+		//		trace(_cam1.ID);
+		//      trace(_cam2.ID);
+		//      trace(_cam3.ID);		
 		
 		super.create();
 	}
