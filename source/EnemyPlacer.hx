@@ -19,10 +19,10 @@ class EnemyPlacer extends FlxGroup
 		_p = p;
 
 		_enemies = new FlxTypedGroup<Enemy>();
-		_enemies.add(new Enemy(0, 170));
+		_enemies.add(new Enemy(0, 170, 100));
 		
 		// appear on camera 1 only
-		_enemies.add(new Enemy(0, 160, [1]));		
+		_enemies.add(new Enemy(0, 160, 100, [1]));		
 		add(_enemies);
 	}
 
