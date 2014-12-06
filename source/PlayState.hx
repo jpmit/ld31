@@ -35,10 +35,6 @@ class PlayState extends FlxState
 		_wWidth = FlxG.width;
 		FlxG.worldBounds.set(_wWidth, _wHeight);
 
-		_enemies = new FlxTypedGroup<Bomb>();
-		_enemies.add(new Bomb(0, 170));
-		add(_enemies);
-
 		_floor = new FlxSprite(0, _wHeight - 20);
 		_floor.immovable = true;
 		_floor.makeGraphic(_wWidth, 20, FlxColor.BLUE);
@@ -80,6 +76,16 @@ class PlayState extends FlxState
 		FlxG.cameras.add(_cam1);
 		FlxG.cameras.add(_cam2);
 		FlxG.cameras.add(_cam3);
+
+		
+		_enemies = new FlxTypedGroup<Enemy>();
+		_enemies.add(new Enemy(0, 170));
+		_enemies.add(new Enemy(0, 160, [1]));		
+		add(_enemies);
+
+		trace(_cam1.ID);
+		trace(_cam2.ID);
+		trace(_cam3.ID);		
 		
 		super.create();
 	}
