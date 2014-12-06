@@ -33,7 +33,7 @@ class MenuState extends FlxState
 		add(block1);
 		add(block2);
 		
-		_titleText = new FlxText(50, 0, 0, "Threescale");
+		_titleText = new FlxText(50, 0, 0, "Thr33scale");
 		_titleText.setFormat(null, 10, FlxColor.BLACK, "center");
 		_titleText.setBorderStyle(FlxText.BORDER_OUTLINE, FlxColor.WHITE, 2);
 		
@@ -50,7 +50,9 @@ class MenuState extends FlxState
 
 		add(_titleText);
 
+		FlxG.sound.playMusic("assets/music/menu.wav", true);
 		//
+		new FlxTimer(1.0, function(t:FlxTimer) { FlxG.sound.play("assets/sounds/whoosh.wav"); });
 		new FlxTimer(1.2, addNameText);
 	}
 

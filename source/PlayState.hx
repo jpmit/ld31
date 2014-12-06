@@ -98,6 +98,8 @@ class PlayState extends FlxState
 		// Enemies
 		_eplacer = new EnemyPlacer(this);
 		add(_eplacer);
+
+		FlxG.sound.playMusic("assets/music/song1.wav");
 		
 		super.create();
 	}
