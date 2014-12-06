@@ -11,6 +11,7 @@ class PlayerDiedState extends FlxSubState
 	{
 		FlxG.cameras.shake(0.005, 0.35);
 		FlxG.cameras.flash(0xffDB3624, 0.35);
+		FlxG.sound.play("assets/sounds/death.wav");
 		_elapsed = 0;
 		super();
 	}

@@ -27,6 +27,7 @@ class Player extends FlxSprite
 		{
 			if (FlxG.keys.justPressed.SPACE)
 			{
+				FlxG.sound.play("assets/sounds/jump.wav");
 				this.velocity.y = - maxVelocity.y;
 			}
 		}

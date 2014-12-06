@@ -30,7 +30,7 @@ class EnemyPlacer extends FlxGroup
 	{
 		// Same as FlxG.collide but calls callback instead of FlxG.separate
 		FlxG.overlap(_enemies, _p.player, _p.hitPlayer);
-		FlxG.overlap(_enemies, _p.boundaries, _p.hitPlayer);		
+		//FlxG.overlap(_enemies, _p.boundaries, _p.hitPlayer);		
 
 		super.update();
 	}
