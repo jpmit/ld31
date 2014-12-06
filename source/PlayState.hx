@@ -74,7 +74,7 @@ class PlayState extends FlxState
 		_cam1.scroll.x = 0.5 * (_wWidth - _wWidth /  Reg.CAM1ZOOM);
 		_cam1.scroll.y = _wHeight - _wHeight / Reg.CAM1ZOOM;
 		_cam1.width = Math.floor(FlxG.width / Reg.CAM1ZOOM);
-		_cam1.height = Math.floor((FlxG.height / 3) / Reg.CAM1ZOOM);
+		//_cam1.height = Math.floor((FlxG.height / 3) / Reg.CAM1ZOOM);
 		_cam2.zoom = Reg.CAM2ZOOM;
 		_cam2.scroll.x = 0.5 * (_wWidth - _wWidth /  Reg.CAM2ZOOM);
 		_cam2.scroll.y = _wHeight - _wHeight / Reg.CAM2ZOOM;

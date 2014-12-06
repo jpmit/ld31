@@ -50,7 +50,7 @@ class MenuState extends FlxState
 
 		add(_titleText);
 
-		FlxG.sound.playMusic("assets/music/menu.wav", true);
+		FlxG.sound.playMusic("assets/music/menu.wav", Reg.MUSICVOL, true);
 		//
 		new FlxTimer(1.0, function(t:FlxTimer) { FlxG.sound.play("assets/sounds/whoosh.wav"); });
 		new FlxTimer(1.2, addNameText);
