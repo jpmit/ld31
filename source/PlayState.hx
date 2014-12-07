@@ -32,7 +32,7 @@ class PlayState extends FlxState
 	// EnemyPlacer adds and removes enemies
 	private var _eplacer:EnemyPlacer;
 
-	override public function new(lnum:Int = 1):Void
+	override public function new(lnum:Int = 3):Void
 	{
 		levelNum = lnum;
 		super();

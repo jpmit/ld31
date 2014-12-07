@@ -51,9 +51,10 @@ class EnemyPlacer extends FlxGroup
 			{
 				var posY:Int;
 				tSpawn = Std.parseFloat(e[2]);
+				var screen = e[0];
 
 				// X, Y, velocity, screens
-				var emy = new Enemy(10, _yLow, EnemyData.SPEED1, e[1]);
+				var emy = new Enemy(10, _yLow, EnemyData.SPEED1, screen);
 				new FlxTimer(tSpawn, function(timer:FlxTimer) { _enemies.add(emy); });
 			}
 			// Set finish time of level to be spawn time of final enemy plus

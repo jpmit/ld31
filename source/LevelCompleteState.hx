@@ -24,7 +24,7 @@ class LevelCompleteState extends FlxSubState
 		_elapsed += FlxG.elapsed;
 
 		super.update();
-		if (_elapsed > 2)
+		if (_elapsed > 1)
 		{
 			close();
 			FlxG.switchState(new PlayState(_ldone + 1));
