@@ -12,11 +12,13 @@ class Tutorial
 		[1 => [["Press space to not die", "0.5", "2.5"]],
          2 => [["Or maybe not", "0.5", "2.5"]],		
 		 3 => [["Apparently it's all one screen", "0.5", "2.5"]],
-		 4 => [["Not sure if I believe that though", "3.0", "5.0"]],
+		 4 => [["I just can't see everything from up here", "3.0", "5.0"]],
+		 5 => [["I can see more now!", "8.5", "10.5"]],
 		 6 => [["Double jump anyone?", "0.5", "2.5"]],
 		 9 => [["You're not getting a triple jump!", "0.5", "2.5"]],
 		10 => [["I heard about these red guys", "0.5", "2.5"],
-               ["Show offs", "5.0", "7.0"]]
+		       ["Show offs", "5.0", "7.0"]],
+		14 => [["I could have made this game a lot harder you know", "19.0", "21.0"]]
 		];
 
 	//private static var _tutX:Int = 150;

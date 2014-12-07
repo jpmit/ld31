@@ -38,7 +38,7 @@ class EnemyData
 		 // See all 3 screens for the first time
 		 5 => [[S1, P1, "0.1"],
 		       [S2, P1, "4.5"],
-		       [S3, P1, "6.5"]
+		       [S3, P1, "10.5"]
 		      ],
 		// Introduce double jump here
 		 6 => [
@@ -112,7 +112,8 @@ class EnemyData
 		 [S3, P1, "5.3"],
 		 [S3, P1, "6.9", "y"],
 		 [S1, P1, "8.0", "y"],
-		 [S1, P1, "8.5", "y"],
+		 // Add this guy for extra difficulty?
+		 //		 [S1, P1, "8.5", "y"],
 		 [S1, P1, "9.0", "y"],
 		 [S1, P2, "9.1", "y"],
 		 [S1, P3, "9.2", "y"],		 
