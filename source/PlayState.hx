@@ -35,7 +35,7 @@ class PlayState extends FlxState
 	// Text that notes how many times I died
 	private var _deathText:FlxText;
 
-	override public function new(lnum:Int = 2):Void
+	override public function new(lnum:Int = 1):Void
 	{
 		levelNum = lnum;
 		super();
@@ -70,8 +70,8 @@ class PlayState extends FlxState
 		boundaries.add(_rwall);		
 		add(boundaries);
 
-		// Allow double jump after level 5
-		if (levelNum >= 5)
+		// Allow double jump after level 6
+		if (levelNum >= 6)
 		{
 			Reg.canDoubleJump = true;
 		}
@@ -155,7 +155,16 @@ class PlayState extends FlxState
 		var changeMusicLevels:Array<Int> = [1, 2, 6];
 		if (Lambda.has(changeMusicLevels, levelNum))
 		{
-			FlxG.sound.playMusic(Reg.getMusic(levelNum), Reg.MUSICVOL, false);
+			var loop:Bool;
+			if (levelNum == 1)
+			{
+				loop = false;
+			}
+			else
+			{
+				loop = true;
+			}
+			FlxG.sound.playMusic(Reg.getMusic(levelNum), Reg.MUSICVOL, loop);
 		}
 
 		

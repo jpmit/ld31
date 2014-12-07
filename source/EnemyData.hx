@@ -40,12 +40,15 @@ class EnemyData
 		       [S3, P1, "6.5"]
 		      ],
 		// Introduce double jump here
-		 6 => [[S1, P1, "0.1"],
-		       [S1, P2, "2.0"],
-		       [S1, P3, "3.0"]
+		 6 => [
+			   [S1, P3, "1"]
 		      ],
 		 7 => [[S1, P4, "0.1"],
-		       [S1, P5, "1.0"]
+		       [S1, P5, "2.0"]
 		      ]
 		 ];
+	// 8 and 9 should be hard levels
+
+	// 10 should introduce red (faster enemies)
+	//	     8 =>
 }
