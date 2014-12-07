@@ -18,7 +18,7 @@ class Reg
 	// Enemy color
 	public static inline var ENCOL = 0xFFFF8000;
 	// Fast enemy color
-	public static inline var FASTENCOL = 0xFFCA1919;
+	public static inline var FASTENCOL = 0xFF8F0000;//0xFFCA1919;
 	// Wall color
 	public static inline var WCOL = 0xFF5F6478;
 	// Width of the 'walls'

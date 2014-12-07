@@ -35,7 +35,7 @@ class PlayState extends FlxState
 	// Text that notes how many times I died
 	private var _deathText:FlxText;
 
-	override public function new(lnum:Int = 10):Void
+	override public function new(lnum:Int = 8):Void
 	{
 		levelNum = lnum;
 		super();
