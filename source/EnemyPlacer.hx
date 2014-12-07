@@ -71,8 +71,15 @@ class EnemyPlacer extends FlxGroup
 						posY = yLow;
 				}
 
+				// Are we a speedy (red) enemy or not?
+				var speed = EnemyData.SPEED1;
+				if (e.length == 4)
+				{
+					speed = EnemyData.SPEED2;
+				}
+
 				// X, Y, velocity, screens
-				var emy = new Enemy(10, posY, EnemyData.SPEED1, screen);
+				var emy = new Enemy(10, posY, speed, screen);
 				new FlxTimer(tSpawn, function(timer:FlxTimer) { _enemies.add(emy); });
 			}
 		}

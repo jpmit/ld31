@@ -13,7 +13,9 @@ class Tutorial
          2 => [["Or maybe not", "0.5", "2.5"]],		
 		 3 => [["Apparently it's all one screen", "0.5", "2.5"]],
 		 4 => [["Not sure if I believe that though", "3.0", "5.0"]],
-		 6 => [["Double Jump?", "0.5", "2.5"]]
+		 6 => [["Double Jump?", "0.5", "2.5"]],
+		10 => [["I heard about these red guys", "0.5", "2.5"],
+               ["Show offs", "4.0", "6.0"]]
 		];
 
 	//private static var _tutX:Int = 150;

@@ -19,24 +19,13 @@ class Enemy extends CameraSprite
 	{
 		// Get the camera Ids we want
 		super(x, y, cIdMap[screens]);
-		makeGraphic(8, 8, Reg.ENCOL);		
-		/*
-		if (screens == EnemyData.S1)
+
+		var col = Reg.ENCOL;
+		if (speed == EnemyData.SPEED2)
 		{
-			// All screens
-			makeGraphic(8, 8, Reg.ENCOL);
+			col = Reg.FASTENCOL;
 		}
-		else if (screens == EnemyData.S2)
-		{
-			// Screens 2 and 3 
-			makeGraphic(4, 4, Reg.ENCOL);
-		}
-		else if (screens == EnemyData.S3)
-		{
-			// Screen 3 only
-			makeGraphic(2, 2, Reg.ENCOL);
-		}
-		*/
+		makeGraphic(8, 8, col);
 				
 		this.velocity.x = speed;
 	}

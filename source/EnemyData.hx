@@ -17,6 +17,7 @@ class EnemyData
 
 	// Enemy speeds
 	public static var SPEED1 = 120;
+	public static var SPEED2 = 180;	
 
 	// Each enemy has screen, spawn position, spawn time
 	public static var data:Map<Int, Array<Array<String>>> =
@@ -45,10 +46,16 @@ class EnemyData
 		      ],
 		 7 => [[S1, P4, "0.1"],
 		       [S1, P5, "2.0"]
-		      ]
+		      ],
+	     // 8 and 9 should be hard levels
+	     // 10 should introduce red (faster) enemies.
+		 10 => [[S1, P5, "2.0", "y"],
+		        [S1, P4, "2.0"]
+		       ],
+		 11 => [[S1, P5, "2.0", "y"],
+		        [S1, P5, "2.4"]
+		       ]
 		 ];
-	// 8 and 9 should be hard levels
 
-	// 10 should introduce red (faster enemies)
-	//	     8 =>
+    // 11 - 15 should be levels with all these dynamics
 }
