@@ -14,15 +14,13 @@ class EnemyData
 	public static var P3 = "3";
 
 	// Enemy speeds
-	public static var SPEED1 = 100;
+	public static var SPEED1 = 120;
 
 	// Each enemy has screen, spawn position, spawn time
 	public static var data:Map<Int, Array<Array<String>>> =
 		[1 => [[S1, P1, "0.1"],
-			   [S1, P2, "0.1"]
-			],
-		 2 => [[S1, P1, "0.1"]]
+			  ],
+		 2 => [[S1, P1, "0.1"]],
+		 3 => [[S2, P2, "0.1"]]
 		];
 }
-
-	

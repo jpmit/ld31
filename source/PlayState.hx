@@ -138,8 +138,12 @@ class PlayState extends FlxState
 		_eplacer = new EnemyPlacer(this);
 		add(_eplacer);
 
-		// Don't loop the main music
-		FlxG.sound.playMusic("assets/music/song1.wav", Reg.MUSICVOL, false);
+		// Don't loop the main music, start new music on certain levels only
+		var changeMusicLevels:Array<Int> = [1, 2, 6];
+		if (Lambda.has(changeMusicLevels, levelNum))
+		{
+			FlxG.sound.playMusic(Reg.getMusic(levelNum), Reg.MUSICVOL, false);
+		}
 		
 		super.create();
 	}

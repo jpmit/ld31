@@ -7,10 +7,12 @@ import flixel.util.FlxColor;
 
 class Enemy extends CameraSprite
 {
+	// Mapping of enemy screens string to array of cameras on which we want to
+	// show the enemy (1 is top, 2 is middle, 3 is bottom).
 	private static var cIdMap:Map<String, Array<Int>> =
 		[EnemyData.S1 => [1, 2, 3],
-		 EnemyData.S2 => [1, 2],
-	 	 EnemyData.S3 => [1, 2, 3]
+		 EnemyData.S2 => [2, 3],
+	 	 EnemyData.S3 => [3]
 		];
 		
 	public function new(x:Int, y:Int, speed:Int, screens:String)

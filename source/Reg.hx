@@ -41,6 +41,26 @@ class Reg
 		 3 => 2
 		];
 
+	// Music for each level
+	private static var _music:Map<Int, String> =
+		[1 => "song1short",
+		 2 => "song1"
+		];
+
+	public static function getMusic(lnum:Int)
+	{
+		if (_music.exists(lnum))
+		{
+	       var mstr = "assets/music/" + _music[lnum];
+	       #if flash
+		   return mstr + ".mp3";
+	       #else
+		   return mstr + ".ogg";
+	       #end
+		}
+	    return "assets/music/song2.wav";
+	}
+
 	public static function getNumScreens(lnum:Int)
 	{
 		if (_numScreens.exists(lnum))
