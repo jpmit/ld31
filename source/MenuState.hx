@@ -33,7 +33,7 @@ class MenuState extends FlxState
 		add(block1);
 		add(block2);
 		
-		_titleText = new FlxText(50, 0, 0, "Thr33scale");
+		_titleText = new FlxText(50, 0, 0, "3scale");
 		_titleText.setFormat(null, 10, FlxColor.BLACK, "center");
 		_titleText.setBorderStyle(FlxText.BORDER_OUTLINE, FlxColor.WHITE, 2);
 		
