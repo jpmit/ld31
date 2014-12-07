@@ -26,7 +26,6 @@ class LevelCompleteState extends FlxSubState
 		super.update();
 		if (_elapsed > 1)
 		{
-			close();
 			if (_ldone == Reg.nLevels)
 			{
 				FlxG.switchState(new GameCompleteState());
@@ -35,6 +34,7 @@ class LevelCompleteState extends FlxSubState
 			{
 				FlxG.switchState(new PlayState(_ldone + 1));
 			}
+			close();
 		}
 	}
 }

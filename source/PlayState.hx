@@ -46,6 +46,9 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		FlxG.mouse.visible = false;
+
+		// This means we keep updating the state even when a substate is open
+		persistentUpdate = true;
 		
 		// Set world dimensions (same as top screen in pixels)
 		wHeight = Math.floor(FlxG.height / 3);
@@ -186,8 +189,8 @@ class PlayState extends FlxState
 	{
 		// Some cool animations here (could use a substate if necessary)
 		updateDeathText();
-		this.subState = new PlayerDiedState(this);
-		obj1.destroy();
+		this.subState = new PlayerDiedState(this, cast(obj2, Player), cast(obj1, Enemy));
+		//		obj1.destroy();
 	}
 
 	public function updateDeathText():Void
@@ -204,6 +207,7 @@ class PlayState extends FlxState
 
 		if (_eplacer.enemiesDone())
 		{
+			persistentUpdate = false; // hacky
 			this.subState = new LevelCompleteState(this);
 		}
 

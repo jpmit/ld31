@@ -12,7 +12,7 @@ class Tutorial
 		[1 => [["Press space to not die", "0.5", "2.5"]],
          2 => [["Or maybe not", "0.5", "2.5"]],		
 		 3 => [["Apparently it's all one screen", "0.5", "2.5"]],
-		 4 => [["I just can't see everything from up here", "3.0", "5.0"]],
+		 4 => [["I just can't see everything from up here", "5.0", "7.0"]],
 		 5 => [["I can see more now!", "8.5", "10.5"]],
 		 6 => [["Double jump anyone?", "0.5", "2.5"]],
 		 9 => [["You're not getting a triple jump!", "0.5", "2.5"]],

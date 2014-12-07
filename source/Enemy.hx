@@ -7,6 +7,7 @@ import flixel.util.FlxColor;
 
 class Enemy extends CameraSprite
 {
+	public var wantedCameras:Array<Int>;
 	// Mapping of enemy screens string to array of cameras on which we want to
 	// show the enemy (1 is top, 2 is middle, 3 is bottom).
 	private static var cIdMap:Map<String, Array<Int>> =
@@ -17,8 +18,11 @@ class Enemy extends CameraSprite
 		
 	public function new(x:Int, y:Int, speed:Int, screens:String)
 	{
+		// We'll access this for death animations
+		wantedCameras = cIdMap[screens];
+		
 		// Get the camera Ids we want
-		super(x, y, cIdMap[screens]);
+		super(x, y, wantedCameras);
 
 		var col = Reg.ENCOL;
 		if (speed == EnemyData.SPEED2)

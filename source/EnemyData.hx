@@ -33,7 +33,7 @@ class EnemyData
 		      ],
 		 // Learn that some projectiles can be on some screens only
 		 4 => [[S1, P1, "0.1"],
-		       [S2, P1, "4.5"]
+		       [S2, P1, "6"]
 		      ],
 		 // See all 3 screens for the first time
 		 5 => [[S1, P1, "0.1"],
