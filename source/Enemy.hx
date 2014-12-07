@@ -13,7 +13,7 @@ class Enemy extends CameraSprite
 	 	 EnemyData.S3 => [1, 2, 3]
 		];
 		
-	public function new(x:Int, y:Int, speed:Int = 100, screens:String)
+	public function new(x:Int, y:Int, speed:Int, screens:String)
 	{
 		// Get the camera Ids we want
 		super(x, y, cIdMap[screens]);

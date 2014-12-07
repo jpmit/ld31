@@ -13,6 +13,9 @@ class EnemyPlacer extends FlxGroup
 	private var _p:PlayState;
 	private var _elapsed:Float;
 
+	// If the level has been running for longer than this time, it is finished (been completed).
+	private var _finishTime:Float;
+
 	// y spawn points
 	private var _yLow:Int;
 	private var _yMid:Int;
@@ -42,17 +45,21 @@ class EnemyPlacer extends FlxGroup
 		// Add the actual enemy spawning
 		if (EnemyData.data.exists(pstate.levelNum))
 		{
+			// Initial value will determine finish time if no enemy data.
+			var tSpawn:Float = 0.0;
 			for (e in EnemyData.data[pstate.levelNum])
 			{
 				var posY:Int;
-				var tSpawn = Std.parseFloat(e[2]);
+				tSpawn = Std.parseFloat(e[2]);
 
 				// X, Y, velocity, screens
-				var emy = new Enemy(10, _yLow, 100, e[1]);
+				var emy = new Enemy(10, _yLow, EnemyData.SPEED1, e[1]);
 				new FlxTimer(tSpawn, function(timer:FlxTimer) { _enemies.add(emy); });
 			}
+			// Set finish time of level to be spawn time of final enemy plus
+			// time it takes to traverse the level plus a small buffer.
+			_finishTime = tSpawn + (pstate.wWidth / EnemyData.SPEED1);
 		}
-		
 	}
 
 	override public function update():Void
@@ -66,10 +73,6 @@ class EnemyPlacer extends FlxGroup
 
 	public function enemiesDone():Bool
 	{
-		if (_elapsed > 5)
-		{
-			return true;
-		}
-		return false;
+		return (_elapsed > _finishTime);
 	}
 }

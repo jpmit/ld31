@@ -111,7 +111,6 @@ class PlayState extends FlxState
 		var ltxt = new FlxText(600, Reg.TUTY, 100, "L" + levelNum);
 		ltxt.setFormat(null, 20, FlxColor.BLACK);
 		add(ltxt);
-		
 
 		// Draw an additional camera (offscreen) over _cam2 and _cam3 if
 		// disabled!
