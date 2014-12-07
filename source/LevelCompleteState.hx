@@ -13,7 +13,7 @@ class LevelCompleteState extends FlxSubState
 	{
 		//		FlxG.cameras.shake(0.005, 0.35);
 		//FlxG.cameras.flash(0xffDB3624, 0.35);
-		//FlxG.sound.play("assets/sounds/complete.wav");
+		FlxG.sound.play("assets/sounds/complete2.wav");
 		_elapsed = 0;
 		_ldone = pstate.levelNum;
 		super();

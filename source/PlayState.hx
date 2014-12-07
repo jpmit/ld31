@@ -125,12 +125,12 @@ class PlayState extends FlxState
 		Tutorial.setup(this);
 
 		// Level text
-		var ltxt = new FlxText(590, Reg.TUTY, 100, "L" + levelNum);
+		var ltxt = new FlxText(580, Reg.TUTY, 100, "L" + levelNum);
 		ltxt.setFormat(null, 20, FlxColor.BLACK);
 		add(ltxt);
 
 		// Death text
-		_deathText = new FlxText(590, Reg.TUTY + 20, 100, "D");// "D" + Reg.nDeaths);
+		_deathText = new FlxText(580, Reg.TUTY + 20, 100, "D");// "D" + Reg.nDeaths);
 		updateDeathText();
 		add(_deathText);
 
