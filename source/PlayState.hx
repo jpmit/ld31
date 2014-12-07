@@ -118,7 +118,8 @@ class PlayState extends FlxState
 		if (nScreens != 3)
 		{
 			var obscureCamera = new FlxCamera(0, 0, wWidth, wHeight * 2);
-			obscureCamera.bgColor = Reg.CCOL;			
+			// Make it the same color as the walls
+			obscureCamera.bgColor = Reg.WCOL;
 			// Only top screen enabled
 			if (nScreens == 1)
 			{
@@ -137,7 +138,8 @@ class PlayState extends FlxState
 		_eplacer = new EnemyPlacer(this);
 		add(_eplacer);
 
-		FlxG.sound.playMusic("assets/music/song1.wav");
+		// Don't loop the main music
+		FlxG.sound.playMusic("assets/music/song1.wav", Reg.MUSICVOL, false);
 		
 		super.create();
 	}

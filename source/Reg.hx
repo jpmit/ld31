@@ -27,7 +27,7 @@ class Reg
 	public static var CAM2ZOOM:Float = 2.0;
 	public static var CAM3ZOOM:Float = 4.0;
 
-	public static var MUSICVOL:Float = 0.5;
+	public static var MUSICVOL:Float = 2.0;
 
 	// Position of tutorial text
 	public static var TUTX:Int = 150;
@@ -38,6 +38,7 @@ class Reg
 	private static var _numScreens:Map<Int, Int> =
 		[1 => 1,
 		 2 => 2,
+		 3 => 2
 		];
 
 	public static function getNumScreens(lnum:Int)
