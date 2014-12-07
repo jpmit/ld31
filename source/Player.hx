@@ -7,7 +7,7 @@ import flixel.util.FlxColor;
 
 class Player extends FlxSprite
 {
-	private static inline var _gravity:Int = 200;
+	private static inline var _gravity:Int = 1000;
 
 	private var _isJumping:Bool;
 	private var _nJumpsMade:Int;
@@ -17,7 +17,7 @@ class Player extends FlxSprite
 	{
 		super(x, y);
 		makeGraphic(20, 20, Reg.PCOL);
-		maxVelocity.set(0, 100);
+		maxVelocity.set(0, 250);
 
 		// Will be set to false the first time we hit the floor
 		_isJumping = true;
@@ -43,16 +43,12 @@ class Player extends FlxSprite
 			_nJumpsMade = 0;
 		}		
 
-		if (velocity.y <= 0)
+		if (FlxG.keys.justPressed.SPACE && _nJumpsMade < _nJumpsAllowed)
 		{
-			//this.isTouching(FlxObject.FLOOR))			
-			if (FlxG.keys.justPressed.SPACE && _nJumpsMade < _nJumpsAllowed)
-			{
-				FlxG.sound.play("assets/sounds/jump.wav");
-				this.velocity.y = -maxVelocity.y;
-				_isJumping = true;
-				++_nJumpsMade;
-			}
+			FlxG.sound.play("assets/sounds/jump.wav");
+			this.velocity.y = -maxVelocity.y;
+			_isJumping = true;
+			++_nJumpsMade;
 		}
 		
 		super.update();

@@ -9,13 +9,13 @@ class LevelCompleteState extends FlxSubState
 	// The level number we just completed
 	private var _ldone:Int;
 	
-	public function new(ldone:Int)
+	public function new(pstate:PlayState)
 	{
 		//		FlxG.cameras.shake(0.005, 0.35);
 		//FlxG.cameras.flash(0xffDB3624, 0.35);
 		//FlxG.sound.play("assets/sounds/complete.wav");
 		_elapsed = 0;
-		_ldone = ldone;
+		_ldone = pstate.levelNum;
 		super();
 	}
 
@@ -27,7 +27,14 @@ class LevelCompleteState extends FlxSubState
 		if (_elapsed > 1)
 		{
 			close();
-			FlxG.switchState(new PlayState(_ldone + 1));
+			if (_ldone == Reg.nLevels)
+			{
+				FlxG.switchState(new GameCompleteState());
+			}
+			else
+			{
+				FlxG.switchState(new PlayState(_ldone + 1));
+			}
 		}
 	}
 }

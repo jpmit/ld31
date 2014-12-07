@@ -32,6 +32,9 @@ class PlayState extends FlxState
 	// EnemyPlacer adds and removes enemies
 	private var _eplacer:EnemyPlacer;
 
+	// Text that notes how many times I died
+	private var _deathText:FlxText;
+
 	override public function new(lnum:Int = 1):Void
 	{
 		levelNum = lnum;
@@ -68,7 +71,6 @@ class PlayState extends FlxState
 		add(boundaries);
 
 		// Allow double jump after level 5
-		trace(levelNum);
 		if (levelNum == 5)
 		{
 			Reg.canDoubleJump = true;
@@ -115,9 +117,13 @@ class PlayState extends FlxState
 		Tutorial.setup(this);
 
 		// Level text
-		var ltxt = new FlxText(600, Reg.TUTY, 100, "L" + levelNum);
+		var ltxt = new FlxText(590, Reg.TUTY, 100, "L" + levelNum);
 		ltxt.setFormat(null, 20, FlxColor.BLACK);
 		add(ltxt);
+
+		// Death text
+		_deathText = new FlxText(590, Reg.TUTY + 20, 100);// "D" + Reg.nDeaths);
+		_deathText.setFormat(null, 20, FlxColor.BLACK);
 
 		// Draw an additional camera (offscreen) over _cam2 and _cam3 if
 		// disabled!
@@ -164,8 +170,14 @@ class PlayState extends FlxState
 	public function hitPlayer(obj1:FlxObject, obj2:FlxObject):Void
 	{
 		// Some cool animations here (could use a substate if necessary)
-		this.subState = new PlayerDiedState();
+		updateDeathText();
+		this.subState = new PlayerDiedState(this);
 		obj1.destroy();
+	}
+
+	public function updateDeathText():Void
+	{
+		_deathText.text = "D" + Reg.nDeaths;
 	}
 
 	override public function update():Void
@@ -175,7 +187,7 @@ class PlayState extends FlxState
 
 		if (_eplacer.enemiesDone())
 		{
-			this.subState = new LevelCompleteState(levelNum);
+			this.subState = new LevelCompleteState(this);
 		}
 
 		super.update();

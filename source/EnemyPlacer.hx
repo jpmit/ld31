@@ -31,36 +31,51 @@ class EnemyPlacer extends FlxGroup
 		// Time elapsed
 		_elapsed = 0.0;
 
-		_enemies = new FlxTypedGroup<Enemy>();
-		
-		// appear on camera 2 and 3 only
-		//_enemies.add(new Enemy(0, 130, 100, [2, 3]));		
-		add(_enemies);
-
 		// 8 pixels is the base size of the enemies
 		_yLow = pstate.wHeight - Reg.WWIDTH - 8;
 		_yMid = _yLow - 8;
 		_yHigh = _yMid - 8;
 
+		addEnemiesForLevel(pstate.levelNum);
+	}
+
+	private function addEnemiesForLevel(lnum:Int)
+	{
+		_enemies = new FlxTypedGroup<Enemy>();
+		add(_enemies);
+
+		// Initialiser will determine finish time if no enemy data.
+		var tSpawn:Float = 0.0;
+
 		// Add the actual enemy spawning
-		if (EnemyData.data.exists(pstate.levelNum))
+		if (EnemyData.data.exists(lnum))
 		{
-			// Initial value will determine finish time if no enemy data.
-			var tSpawn:Float = 0.0;
-			for (e in EnemyData.data[pstate.levelNum])
+			for (e in EnemyData.data[lnum])
 			{
 				var posY:Int;
 				tSpawn = Std.parseFloat(e[2]);
 				var screen = e[0];
 
+				switch(e[1]) {
+					// nearest the bottom of the screen
+					case EnemyData.P1:
+						posY = _yLow;
+					case EnemyData.P2:
+						posY = _yMid;
+					case EnemyData.P3:
+						posY = _yHigh;
+					default:
+						posY = _yLow;
+				}
+
 				// X, Y, velocity, screens
-				var emy = new Enemy(10, _yLow, EnemyData.SPEED1, screen);
+				var emy = new Enemy(10, posY, EnemyData.SPEED1, screen);
 				new FlxTimer(tSpawn, function(timer:FlxTimer) { _enemies.add(emy); });
 			}
-			// Set finish time of level to be spawn time of final enemy plus
-			// time it takes to traverse the level plus a small buffer.
-			_finishTime = tSpawn + (pstate.wWidth / EnemyData.SPEED1);
 		}
+		// Set finish time of level to be spawn time of final enemy plus time it
+		// takes to traverse the level.
+		_finishTime = tSpawn + (FlxG.width / EnemyData.SPEED1);
 	}
 
 	override public function update():Void

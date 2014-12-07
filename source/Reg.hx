@@ -33,6 +33,12 @@ class Reg
 	public static var TUTX:Int = 150;
 	public static var TUTY:Int = 20;
 
+	// Total number of levels in the game
+	public static inline var nLevels = 5;
+
+	// Number of times the player has died
+	public static var nDeaths = 0;
+
 	// Mapping of level numbers to number of screens shown - if key doesn't
 	// exist, 3 screens are shown.
 	private static var _numScreens:Map<Int, Int> =
@@ -58,7 +64,12 @@ class Reg
 		   return mstr + ".ogg";
 	       #end
 		}
-	    return "assets/music/song2.wav";
+	    // Default soundtrack
+	    #if flash
+	    return "assets/music/song2.mp3";
+	    #else
+	    return "assets/music/song2.ogg";
+	    #end
 	}
 
 	public static function getNumScreens(lnum:Int)
