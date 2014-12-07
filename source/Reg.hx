@@ -14,6 +14,24 @@ class Reg
 	public static var CAM3ZOOM:Float = 4.0;
 
 	public static var MUSICVOL:Float = 0.5;
+
+	// Position of tutorial text
+	public static var TUTX:Int = 150;
+	public static var TUTY:Int = 20;
+
+	private static var _numScreens:Map<Int, Int> =
+		[1 => 1,
+		 2 => 2,
+		];
+
+	public static function getNumScreens(lnum:Int)
+	{
+		if (_numScreens.exists(lnum))
+		{
+			return _numScreens[lnum];
+		}
+		return 3;
+	}
 	
 	public static var levels:Array<Dynamic> = [];
 	/**

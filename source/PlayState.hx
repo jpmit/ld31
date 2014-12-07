@@ -16,6 +16,9 @@ class PlayState extends FlxState
 {
 	public var player:Player;
 	public var boundaries:FlxGroup;
+
+	// Level number (first level is 1)
+	private var _lnum:Int;
 	
 	// Width and height of each world (i.e. the 'screen')
 	private var _wHeight:Int;
@@ -28,6 +31,17 @@ class PlayState extends FlxState
 
 	// EnemyPlacer adds and removes enemies
 	private var _eplacer:EnemyPlacer;
+
+	override public function new(lnum:Int = 1):Void
+	{
+		_lnum = lnum;
+		super();
+	}
+
+	public function getLevelNum():Int
+	{
+		return _lnum;
+	}
 	
 	override public function create():Void
 	{
@@ -95,6 +109,35 @@ class PlayState extends FlxState
 		FlxG.cameras.add(_cam2);
 		FlxG.cameras.add(_cam3);
 
+		// Setup tutorial
+		Tutorial.setup(this, _lnum);
+
+		// Level text
+		var ltxt = new FlxText(600, Reg.TUTY, 100, "L" + _lnum);
+		ltxt.setFormat(null, 20, FlxColor.BLACK);
+		add(ltxt);
+		
+
+		// Draw an additional camera (offscreen) over _cam2 and _cam3 if
+		// disabled!
+		var nScreens = Reg.getNumScreens(_lnum);
+		if (nScreens != 3)
+		{
+			var obscureCamera = new FlxCamera(0, 0, _wWidth, _wHeight * 2);
+			// Only top screen enabled
+			if (nScreens == 1)
+			{
+				obscureCamera.y = _wHeight;
+			}
+			else if (nScreens == 2)
+			{
+				obscureCamera.y = _wHeight * 2;				
+			}
+			FlxG.cameras.add(obscureCamera);
+			// Place camera 'offscreen' so no sprites are drawn
+			obscureCamera.scroll.y = FlxG.height;	
+		}
+
 		// Enemies
 		_eplacer = new EnemyPlacer(this);
 		add(_eplacer);
@@ -118,7 +161,13 @@ class PlayState extends FlxState
 
 	override public function update():Void
 	{
+		// Make sure I hit the floor
 		FlxG.collide(boundaries, player);
+
+		if (_eplacer.enemiesDone())
+		{
+			this.subState = new LevelCompleteState(_lnum);
+		}
 
 		super.update();
 	}
