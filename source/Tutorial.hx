@@ -10,9 +10,10 @@ class Tutorial
 {
 	private static var _tutData:Map<Int, Array<Array<String>>> =
 		[1 => [["Press space to not die", "0.5", "2.5"]],
-		2 => [["Apparently it's all one screen", "0.5", "2.5"]],
-		3 => [["Not sure if I believe that though", "3.0", "5.0"]],
-		5 => [["Double Jump?", "0.5", "2.5"]]
+         2 => [["Or maybe not", "0.5", "2.5"]],		
+		 3 => [["Apparently it's all one screen", "0.5", "2.5"]],
+		 4 => [["Not sure if I believe that though", "3.0", "5.0"]],
+		 6 => [["Double Jump?", "0.5", "2.5"]]
 		];
 
 	//private static var _tutX:Int = 150;

@@ -16,10 +16,6 @@ class EnemyPlacer extends FlxGroup
 	// If the level has been running for longer than this time, it is finished (been completed).
 	private var _finishTime:Float;
 
-	// y spawn points
-	private var _yLow:Int;
-	private var _yMid:Int;
-	private var _yHigh:Int;	
 
 	public function new(pstate:PlayState):Void
 	{
@@ -31,16 +27,19 @@ class EnemyPlacer extends FlxGroup
 		// Time elapsed
 		_elapsed = 0.0;
 
-		// 8 pixels is the base size of the enemies
-		_yLow = pstate.wHeight - Reg.WWIDTH - 8;
-		_yMid = _yLow - 8;
-		_yHigh = _yMid - 8;
-
 		addEnemiesForLevel(pstate.levelNum);
 	}
 
 	private function addEnemiesForLevel(lnum:Int)
 	{
+		// y spawn points
+		// 8 pixels is the base size of the enemies		
+		var yLow:Int = _p.wHeight - Reg.WWIDTH - 8;
+		var yMid:Int = yLow - 8;
+		var yHigh:Int = yMid - 8;
+		var yVeryHigh:Int = yHigh - 8;
+		var yVeryVeryHigh:Int = yVeryHigh - 8;		
+		
 		_enemies = new FlxTypedGroup<Enemy>();
 		add(_enemies);
 
@@ -59,13 +58,17 @@ class EnemyPlacer extends FlxGroup
 				switch(e[1]) {
 					// nearest the bottom of the screen
 					case EnemyData.P1:
-						posY = _yLow;
+						posY = yLow;
 					case EnemyData.P2:
-						posY = _yMid;
+						posY = yMid;
 					case EnemyData.P3:
-						posY = _yHigh;
+						posY = yHigh;
+					case EnemyData.P4:
+						posY = yVeryHigh;
+					case EnemyData.P5:
+						posY = yVeryVeryHigh;
 					default:
-						posY = _yLow;
+						posY = yLow;
 				}
 
 				// X, Y, velocity, screens

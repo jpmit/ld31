@@ -19,7 +19,8 @@ class Enemy extends CameraSprite
 	{
 		// Get the camera Ids we want
 		super(x, y, cIdMap[screens]);
-
+		makeGraphic(8, 8, Reg.ENCOL);		
+		/*
 		if (screens == EnemyData.S1)
 		{
 			// All screens
@@ -35,6 +36,7 @@ class Enemy extends CameraSprite
 			// Screen 3 only
 			makeGraphic(2, 2, Reg.ENCOL);
 		}
+		*/
 				
 		this.velocity.x = speed;
 	}

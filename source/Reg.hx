@@ -34,7 +34,7 @@ class Reg
 	public static var TUTY:Int = 20;
 
 	// Total number of levels in the game
-	public static inline var nLevels = 5;
+	public static inline var nLevels = 7;
 
 	// Number of times the player has died
 	public static var nDeaths = 0;
@@ -43,8 +43,9 @@ class Reg
 	// exist, 3 screens are shown.
 	private static var _numScreens:Map<Int, Int> =
 		[1 => 1,
-		 2 => 2,
-		 3 => 2
+		 2 => 1,
+		 3 => 2,
+		 4 => 2
 		];
 
 	// Music for each level
