@@ -36,7 +36,7 @@ class Reg
 	public static var TUTY:Int = 20;
 
 	// Total number of levels in the game
-	public static inline var nLevels = 7;
+	public static inline var nLevels = 14;
 
 	// Number of times the player has died
 	public static var nDeaths = 0;

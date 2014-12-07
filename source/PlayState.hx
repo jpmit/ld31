@@ -35,7 +35,7 @@ class PlayState extends FlxState
 	// Text that notes how many times I died
 	private var _deathText:FlxText;
 
-	override public function new(lnum:Int = 8):Void
+	override public function new(lnum:Int = 14):Void
 	{
 		levelNum = lnum;
 		super();
@@ -122,8 +122,9 @@ class PlayState extends FlxState
 		add(ltxt);
 
 		// Death text
-		_deathText = new FlxText(590, Reg.TUTY + 20, 100);// "D" + Reg.nDeaths);
-		_deathText.setFormat(null, 20, FlxColor.BLACK);
+		_deathText = new FlxText(590, Reg.TUTY + 20, 100, "D");// "D" + Reg.nDeaths);
+		updateDeathText();
+		add(_deathText);
 
 		// Draw an additional camera (offscreen) over _cam2 and _cam3 if
 		// disabled!
@@ -187,6 +188,8 @@ class PlayState extends FlxState
 	public function updateDeathText():Void
 	{
 		_deathText.text = "D" + Reg.nDeaths;
+		_deathText.setFormat(null, 20, FlxColor.BLACK);
+		_deathText.updateFrameData();
 	}
 
 	override public function update():Void

@@ -14,6 +14,7 @@ class Tutorial
 		 3 => [["Apparently it's all one screen", "0.5", "2.5"]],
 		 4 => [["Not sure if I believe that though", "3.0", "5.0"]],
 		 6 => [["Double jump anyone?", "0.5", "2.5"]],
+		 9 => [["You're not getting a triple jump!", "0.5", "2.5"]],
 		10 => [["I heard about these red guys", "0.5", "2.5"],
                ["Show offs", "5.0", "7.0"]]
 		];

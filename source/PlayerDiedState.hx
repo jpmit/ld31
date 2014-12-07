@@ -12,7 +12,11 @@ class PlayerDiedState extends FlxSubState
 	{
 		_lnum = pstate.levelNum;
 		// Update global registry
-		Reg.nDeaths += 1;
+		// Be nice and only allow 99 deaths max
+		if (Reg.nDeaths <= 99)
+		{			
+			Reg.nDeaths += 1;
+		}
 		FlxG.cameras.shake(0.005, 0.35);
 		FlxG.cameras.flash(0xffDB3624, 0.35);
 		FlxG.sound.play("assets/sounds/death.wav");
