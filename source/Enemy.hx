@@ -37,5 +37,10 @@ class Enemy extends CameraSprite
 	public override function update():Void
 	{
 		super.update();
+		// Slightly hacky for destroying enemies at edge of screen (20 is just padding)
+		if (this.x > FlxG.width - Reg.WWIDTH - 5)
+		{
+			this.destroy();
+		}
 	}
 }
