@@ -24,6 +24,8 @@ class PlayState extends FlxState
 	public var wHeight:Int;
 	public var wWidth:Int;
 
+	public var tElapsed:Float;
+
 	// Cameras numbered from top
 	private var _cam1:FlxCamera;
 	private var _cam2:FlxCamera;
@@ -49,6 +51,9 @@ class PlayState extends FlxState
 		wHeight = Math.floor(FlxG.height / 3);
 		wWidth = FlxG.width;
 		FlxG.worldBounds.set(wWidth, wHeight);
+
+		// Store time elapsed
+		tElapsed = 0.0;
 
 		// Create screen boundary
 		var _floor = new FlxSprite(0, wHeight - Reg.WWIDTH);
@@ -201,6 +206,10 @@ class PlayState extends FlxState
 		{
 			this.subState = new LevelCompleteState(this);
 		}
+
+		// Update max time elapsed in this level (used so we don't redisplay
+		// tutorial text)
+		tElapsed += FlxG.elapsed;
 
 		super.update();
 	}

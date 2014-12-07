@@ -49,15 +49,18 @@ class Tutorial
 				for (i in 0...nlines)
 				{
 					var txt = new FlxText(Reg.TUTX, Reg.TUTY + 30 * (i + currentLines), 400, t[i]);
-					//txt.setFormat("assets/fonts/ShareTechMono-Regular.ttf", 22);
 					txt.setFormat(null, 20, FlxColor.BLACK);
-					//					txt.scrollFactor.set(0, 0);
 					txtArray.push(txt);
 				}
 				currentLines += nlines;
 				lastTime = end;
-				new FlxTimer(start, function(timer:FlxTimer) { showText(pstate, txtArray); });
-				new FlxTimer(end, function(timer:FlxTimer) { hideText(pstate, txtArray); });
+
+				// Add text only if we haven't seen it yet
+				if (start > Reg.tElapsed[pstate.levelNum])
+				{
+					new FlxTimer(start, function(timer:FlxTimer) { showText(pstate, txtArray); });
+					new FlxTimer(end, function(timer:FlxTimer) { hideText(pstate, txtArray); });
+				}
 			}
 		}
 	}

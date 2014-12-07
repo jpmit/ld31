@@ -17,6 +17,13 @@ class PlayerDiedState extends FlxSubState
 		{			
 			Reg.nDeaths += 1;
 		}
+
+		if (pstate.tElapsed > Reg.tElapsed[pstate.levelNum])
+		{
+			Reg.tElapsed[pstate.levelNum] = pstate.tElapsed;
+		}
+
+		// Set max time elapsed in this state
 		FlxG.cameras.shake(0.005, 0.35);
 		FlxG.cameras.flash(0xffDB3624, 0.35);
 		FlxG.sound.play("assets/sounds/death.wav");
