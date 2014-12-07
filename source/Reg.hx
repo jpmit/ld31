@@ -5,8 +5,22 @@ import flixel.util.FlxSave;
 
 class Reg
 {
-	// Width of the 'edges' (boundaries) of screen
-	public static inline var EWIDTH:Int = 5;
+	// Blue color
+	public static inline var BCOL = 0x6283FF;
+	// Orange
+	public static inline var OCOL = 0xFF8000;
+	// Yellow
+	public static inline var YCOL = 0xE6E600;
+	// Player color (needs alpha setting as the first byte)
+	public static inline var PCOL = 0xFF000052;
+	// Camera background color
+	public static inline var CCOL = 0xFFFFF177;
+	// Enemy color
+	public static inline var ENCOL = 0xFFFF8000;
+	// Wall color
+	public static inline var WCOL = 0xFF5F6478;
+	// Width of the 'walls'
+	public static inline var WWIDTH:Int = 5;
 
 	// Camera Zoom (cam 1 zoom should be 1.0)
 	public static var CAM1ZOOM:Float = 1.0;
@@ -19,6 +33,8 @@ class Reg
 	public static var TUTX:Int = 150;
 	public static var TUTY:Int = 20;
 
+	// Mapping of level numbers to number of screens shown - if key doesn't
+	// exist, 3 screens are shown.
 	private static var _numScreens:Map<Int, Int> =
 		[1 => 1,
 		 2 => 2,

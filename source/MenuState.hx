@@ -36,13 +36,9 @@ class MenuState extends FlxState
 		_titleText = new FlxText(50, 0, 0, "3scale");
 		_titleText.setFormat(null, 10, FlxColor.BLACK, "center");
 		_titleText.setBorderStyle(FlxText.BORDER_OUTLINE, FlxColor.WHITE, 2);
-		
-		_titleText.addFormat(new FlxTextFormat(0xE6E600, false, false, 0xFF8000, 2, 4));
-		_titleText.addFormat(new FlxTextFormat(0xFFAE5E, false, false, 0xFF8000, 4, 6));
-		_titleText.addFormat(new FlxTextFormat(0x008040, false, false, null, 6, 10));
-		_titleText.addFormat(new FlxTextFormat(0x0080C0, false, false, null, 8, 12));
-		_titleText.addFormat(new FlxTextFormat(0x00E6E6, false, false, null, 8, 10));
-		_titleText.addFormat(new FlxTextFormat(0x0080FF, false, false, 0xFFFFFF, 12, 100));
+
+		// FlxTextFormat is color, bold, italic, BorderColor, Start, End
+		_titleText.addFormat(new FlxTextFormat(Reg.OCOL, false, false, Reg.YCOL, 1, 6));
 
 		_nTitleTweens = 0;
 		_canStart = false;
@@ -51,17 +47,15 @@ class MenuState extends FlxState
 		add(_titleText);
 
 		FlxG.sound.playMusic("assets/music/menu.wav", Reg.MUSICVOL, true);
-		//
 		new FlxTimer(1.0, function(t:FlxTimer) { FlxG.sound.play("assets/sounds/whoosh.wav"); });
 		new FlxTimer(1.2, addNameText);
 	}
 
 	public function addNameText(timer:FlxTimer)
 	{
-		//		FlxG.sound.play("assets/sounds/tweenshort.wav");		
 		var nameText = new FlxText(0, 0, 0, "A Ludum Dare 31 game by jpmit");
-		nameText.setFormat(null, 20, FlxColor.BLUE, "center");
-		nameText.setBorderStyle(FlxText.BORDER_OUTLINE, FlxColor.WHITE, 2);		
+		nameText.setFormat(null, 20, Reg.BCOL, "center");
+		nameText.setBorderStyle(FlxText.BORDER_OUTLINE, FlxColor.BLACK, 2);
 		
 		FlxTween.tween(nameText, { x: 100, y: 300}, 1.0, {ease: FlxEase.elasticOut, complete:showStartText});
 		add(nameText);
@@ -73,18 +67,21 @@ class MenuState extends FlxState
 		{
 			FlxG.sound.play("assets/sounds/tweenexpl.wav");
 		}
+		
 		_nTitleTweens += 1;
 		_titleText.size *= 2;
 		_titleText.x = FlxG.width / 2 - _titleText.fieldWidth / 2;
+		
 		if (_nTitleTweens < 3)
 		{
-			FlxTween.tween(_titleText, { x: _titleText.x, y: _titleText.y + 100}, 0.5, {complete: runTitleTextTween});
+			FlxTween.tween(_titleText, { x: _titleText.x, y: _titleText.y + 90}, 0.5, {complete: runTitleTextTween});
 		}
 	}
 
 	public function showStartText(f:FlxTween):Void
 	{
 		FlxG.sound.play("assets/sounds/tweenshort.wav");
+
 		_canStart = true;
 		var startText = new FlxText(200, 350, 0, "Press space to start");
 		startText.setFormat(null, 20, FlxColor.BLACK, "center");
@@ -103,8 +100,7 @@ class MenuState extends FlxState
 		if (_canStart && FlxG.keys.justReleased.SPACE)
 		{
 			FlxG.sound.play("assets/sounds/start.wav");			
-			new FlxTimer(1.0, function(t:FlxTimer) {
-				              FlxG.switchState(new PlayState()); });
+			new FlxTimer(1.0, function(t:FlxTimer) { FlxG.switchState(new PlayState()); });
 		};
 		super.update();
 	}	

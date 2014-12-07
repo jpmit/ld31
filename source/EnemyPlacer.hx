@@ -35,7 +35,7 @@ class EnemyPlacer extends FlxGroup
 		add(_enemies);
 
 		// 8 pixels is the base size of the enemies
-		_yLow = pstate.wHeight - Reg.EWIDTH - 8;
+		_yLow = pstate.wHeight - Reg.WWIDTH - 8;
 		_yMid = _yLow - 8;
 		_yHigh = _yMid - 8;
 

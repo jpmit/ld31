@@ -12,11 +12,8 @@ class Player extends FlxSprite
 	public function new(x:Int, y:Int)
 	{
 		super(x, y);
-		makeGraphic(20, 20, FlxColor.BLACK);
+		makeGraphic(20, 20, Reg.PCOL);
 		maxVelocity.set(0, 100);
-
-		//immovable = true;
-		//elasticity = 1.0;
 	}
 
 	public override function update():Void

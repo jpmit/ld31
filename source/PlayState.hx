@@ -48,18 +48,18 @@ class PlayState extends FlxState
 		FlxG.worldBounds.set(wWidth, wHeight);
 
 		// Create screen boundary
-		var _floor = new FlxSprite(0, wHeight - Reg.EWIDTH);
+		var _floor = new FlxSprite(0, wHeight - Reg.WWIDTH);
 		_floor.immovable = true;
-		_floor.makeGraphic(wWidth, Reg.EWIDTH, FlxColor.BLUE);
+		_floor.makeGraphic(wWidth, Reg.WWIDTH, Reg.WCOL);
 		var _ceiling = new FlxSprite(0, 0);
 		_ceiling.immovable = true;
-		_ceiling.makeGraphic(wWidth, Reg.EWIDTH, FlxColor.BLUE);
+		_ceiling.makeGraphic(wWidth, Reg.WWIDTH, Reg.WCOL);
 		var _lwall = new FlxSprite(0, 0);
 		_lwall.immovable = true;
-		_lwall.makeGraphic(Reg.EWIDTH, wHeight, FlxColor.BLUE);
-		var _rwall = new FlxSprite(wWidth - Reg.EWIDTH, 0);
+		_lwall.makeGraphic(Reg.WWIDTH, wHeight, Reg.WCOL);
+		var _rwall = new FlxSprite(wWidth - Reg.WWIDTH, 0);
 		_rwall.immovable = true;
-		_rwall.makeGraphic(Reg.EWIDTH, wHeight, FlxColor.BLUE);
+		_rwall.makeGraphic(Reg.WWIDTH, wHeight, Reg.WCOL);
 		boundaries = new FlxGroup();
 		boundaries.add(_floor);
 		boundaries.add(_ceiling);
@@ -74,9 +74,9 @@ class PlayState extends FlxState
 		_cam1 = new FlxCamera(0, 0, wWidth, wHeight);
 		_cam2 = new FlxCamera(0, wHeight, wWidth, wHeight);
 		_cam3 = new FlxCamera(0, wHeight * 2,  wWidth, wHeight);
-		_cam1.bgColor = FlxColor.WHITE;
-		_cam2.bgColor = FlxColor.WHITE;
-		_cam3.bgColor = FlxColor.WHITE;
+		_cam1.bgColor = Reg.CCOL;
+		_cam2.bgColor = Reg.CCOL;
+		_cam3.bgColor = Reg.CCOL;
 
 		// Set camera positions, extents, and zoom.
 		_cam1.zoom = Reg.CAM1ZOOM;
@@ -119,6 +119,7 @@ class PlayState extends FlxState
 		if (nScreens != 3)
 		{
 			var obscureCamera = new FlxCamera(0, 0, wWidth, wHeight * 2);
+			obscureCamera.bgColor = Reg.CCOL;			
 			// Only top screen enabled
 			if (nScreens == 1)
 			{

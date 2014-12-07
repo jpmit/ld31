@@ -21,17 +21,17 @@ class Enemy extends CameraSprite
 		if (screens == EnemyData.S1)
 		{
 			// All screens
-			makeGraphic(8, 8, FlxColor.YELLOW);
+			makeGraphic(8, 8, Reg.ENCOL);
 		}
 		else if (screens == EnemyData.S2)
 		{
 			// Screens 2 and 3 
-			makeGraphic(4, 4, FlxColor.YELLOW);
+			makeGraphic(4, 4, Reg.ENCOL);
 		}
 		else if (screens == EnemyData.S3)
 		{
 			// Screen 3 only
-			makeGraphic(2, 2, FlxColor.YELLOW);
+			makeGraphic(2, 2, Reg.ENCOL);
 		}
 				
 		this.velocity.x = speed;
