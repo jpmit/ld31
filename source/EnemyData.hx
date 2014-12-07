@@ -18,10 +18,14 @@ class EnemyData
 
 	// Each enemy has screen, spawn position, spawn time
 	public static var data:Map<Int, Array<Array<String>>> =
-		[1 => [[S1, P1, "0.1"],
+		[1 => [[S1, P1, "2"]
 			  ],
-		 2 => [[S1, P1, "0.1"]],
+		 2 => [[S1, P1, "2"]],
 		 3 => [[S1, P1, "0.1"],
-		       [S2, P1, "4.5"]]
+		       [S2, P1, "4.5"]],
+		 4 => [[S1, P1, "0.1"],
+		       [S2, P1, "4.5"],
+		       [S3, P1, "6.5"]
+		      ]
 		];
 }

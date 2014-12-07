@@ -69,6 +69,8 @@ class Reg
 		}
 		return 3;
 	}
+
+	public static var canDoubleJump:Bool = false;
 	
 	public static var levels:Array<Dynamic> = [];
 	/**

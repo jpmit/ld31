@@ -32,7 +32,7 @@ class PlayState extends FlxState
 	// EnemyPlacer adds and removes enemies
 	private var _eplacer:EnemyPlacer;
 
-	override public function new(lnum:Int = 3):Void
+	override public function new(lnum:Int = 1):Void
 	{
 		levelNum = lnum;
 		super();
@@ -66,6 +66,13 @@ class PlayState extends FlxState
 		boundaries.add(_lwall);
 		boundaries.add(_rwall);		
 		add(boundaries);
+
+		// Allow double jump after level 5
+		trace(levelNum);
+		if (levelNum == 5)
+		{
+			Reg.canDoubleJump = true;
+		}
 
 		player = new Player(300, 100);
 		add(player);
@@ -144,6 +151,7 @@ class PlayState extends FlxState
 		{
 			FlxG.sound.playMusic(Reg.getMusic(levelNum), Reg.MUSICVOL, false);
 		}
+
 		
 		super.create();
 	}
