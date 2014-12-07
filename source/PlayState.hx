@@ -18,11 +18,11 @@ class PlayState extends FlxState
 	public var boundaries:FlxGroup;
 
 	// Level number (first level is 1)
-	private var _lnum:Int;
+	public var levelNum:Int;
 	
 	// Width and height of each world (i.e. the 'screen')
-	private var _wHeight:Int;
-	private var _wWidth:Int;
+	public var wHeight:Int;
+	public var wWidth:Int;
 
 	// Cameras numbered from top
 	private var _cam1:FlxCamera;
@@ -34,13 +34,8 @@ class PlayState extends FlxState
 
 	override public function new(lnum:Int = 1):Void
 	{
-		_lnum = lnum;
+		levelNum = lnum;
 		super();
-	}
-
-	public function getLevelNum():Int
-	{
-		return _lnum;
 	}
 	
 	override public function create():Void
@@ -48,23 +43,23 @@ class PlayState extends FlxState
 		FlxG.mouse.visible = false;
 		
 		// Set world dimensions (same as top screen in pixels)
-		_wHeight = Math.floor(FlxG.height / 3);
-		_wWidth = FlxG.width;
-		FlxG.worldBounds.set(_wWidth, _wHeight);
+		wHeight = Math.floor(FlxG.height / 3);
+		wWidth = FlxG.width;
+		FlxG.worldBounds.set(wWidth, wHeight);
 
 		// Create screen boundary
-		var _floor = new FlxSprite(0, _wHeight - Reg.EWIDTH);
+		var _floor = new FlxSprite(0, wHeight - Reg.EWIDTH);
 		_floor.immovable = true;
-		_floor.makeGraphic(_wWidth, Reg.EWIDTH, FlxColor.BLUE);
+		_floor.makeGraphic(wWidth, Reg.EWIDTH, FlxColor.BLUE);
 		var _ceiling = new FlxSprite(0, 0);
 		_ceiling.immovable = true;
-		_ceiling.makeGraphic(_wWidth, Reg.EWIDTH, FlxColor.BLUE);
+		_ceiling.makeGraphic(wWidth, Reg.EWIDTH, FlxColor.BLUE);
 		var _lwall = new FlxSprite(0, 0);
 		_lwall.immovable = true;
-		_lwall.makeGraphic(Reg.EWIDTH, _wHeight, FlxColor.BLUE);
-		var _rwall = new FlxSprite(_wWidth - Reg.EWIDTH, 0);
+		_lwall.makeGraphic(Reg.EWIDTH, wHeight, FlxColor.BLUE);
+		var _rwall = new FlxSprite(wWidth - Reg.EWIDTH, 0);
 		_rwall.immovable = true;
-		_rwall.makeGraphic(Reg.EWIDTH, _wHeight, FlxColor.BLUE);
+		_rwall.makeGraphic(Reg.EWIDTH, wHeight, FlxColor.BLUE);
 		boundaries = new FlxGroup();
 		boundaries.add(_floor);
 		boundaries.add(_ceiling);
@@ -76,62 +71,62 @@ class PlayState extends FlxState
 		add(player);
 
 		// Cameras
-		_cam1 = new FlxCamera(0, 0, _wWidth, _wHeight);
-		_cam2 = new FlxCamera(0, _wHeight, _wWidth, _wHeight);
-		_cam3 = new FlxCamera(0, _wHeight * 2,  _wWidth, _wHeight);
+		_cam1 = new FlxCamera(0, 0, wWidth, wHeight);
+		_cam2 = new FlxCamera(0, wHeight, wWidth, wHeight);
+		_cam3 = new FlxCamera(0, wHeight * 2,  wWidth, wHeight);
 		_cam1.bgColor = FlxColor.WHITE;
 		_cam2.bgColor = FlxColor.WHITE;
 		_cam3.bgColor = FlxColor.WHITE;
 
 		// Set camera positions, extents, and zoom.
 		_cam1.zoom = Reg.CAM1ZOOM;
-		_cam1.scroll.x = 0.5 * (_wWidth - _wWidth /  Reg.CAM1ZOOM);
-		_cam1.scroll.y = _wHeight - _wHeight / Reg.CAM1ZOOM;
+		_cam1.scroll.x = 0.5 * (wWidth - wWidth /  Reg.CAM1ZOOM);
+		_cam1.scroll.y = wHeight - wHeight / Reg.CAM1ZOOM;
 		_cam1.width = Math.floor(FlxG.width / Reg.CAM1ZOOM);
 		//_cam1.height = Math.floor((FlxG.height / 3) / Reg.CAM1ZOOM);
 		_cam2.zoom = Reg.CAM2ZOOM;
-		_cam2.scroll.x = 0.5 * (_wWidth - _wWidth /  Reg.CAM2ZOOM);
-		_cam2.scroll.y = _wHeight - _wHeight / Reg.CAM2ZOOM;
+		_cam2.scroll.x = 0.5 * (wWidth - wWidth /  Reg.CAM2ZOOM);
+		_cam2.scroll.y = wHeight - wHeight / Reg.CAM2ZOOM;
 		_cam2.width = Math.floor(FlxG.width / Reg.CAM2ZOOM);
 		_cam2.height = Math.floor((FlxG.height / 3) / Reg.CAM2ZOOM);		
 		_cam3.zoom = Reg.CAM3ZOOM;
-		_cam3.scroll.x = 0.5 * (_wWidth - _wWidth /  Reg.CAM3ZOOM);
-		_cam3.scroll.y = _wHeight - _wHeight / Reg.CAM3ZOOM;
+		_cam3.scroll.x = 0.5 * (wWidth - wWidth /  Reg.CAM3ZOOM);
+		_cam3.scroll.y = wHeight - wHeight / Reg.CAM3ZOOM;
 		_cam3.width = Math.floor(FlxG.width / Reg.CAM3ZOOM);
 		_cam3.height = Math.floor((FlxG.height /  3) / Reg.CAM3ZOOM);
 		//_cam2.setBounds(_cam2.scroll.x, _cam2.scroll.y,
-		//                _cam2.scroll.x + _wWidth / _cam2Zoom,
-		//                _cam2.scroll.y + _wHeight / _cam2Zoom);
+		//                _cam2.scroll.x + wWidth / _cam2Zoom,
+		//                _cam2.scroll.y + wHeight / _cam2Zoom);
 		//_cam3.setBounds(_cam3.scroll.x, _cam3.scroll.y,
-		//                _cam3.scroll.x + _wWidth / _cam3Zoom,
-		//                _cam3.scroll.y + _wHeight / _cam3Zoom);
+		//                _cam3.scroll.x + wWidth / _cam3Zoom,
+		//                _cam3.scroll.y + wHeight / _cam3Zoom);
 		FlxG.cameras.add(_cam1);
 		FlxG.cameras.add(_cam2);
 		FlxG.cameras.add(_cam3);
 
 		// Setup tutorial
-		Tutorial.setup(this, _lnum);
+		Tutorial.setup(this);
 
 		// Level text
-		var ltxt = new FlxText(600, Reg.TUTY, 100, "L" + _lnum);
+		var ltxt = new FlxText(600, Reg.TUTY, 100, "L" + levelNum);
 		ltxt.setFormat(null, 20, FlxColor.BLACK);
 		add(ltxt);
 		
 
 		// Draw an additional camera (offscreen) over _cam2 and _cam3 if
 		// disabled!
-		var nScreens = Reg.getNumScreens(_lnum);
+		var nScreens = Reg.getNumScreens(levelNum);
 		if (nScreens != 3)
 		{
-			var obscureCamera = new FlxCamera(0, 0, _wWidth, _wHeight * 2);
+			var obscureCamera = new FlxCamera(0, 0, wWidth, wHeight * 2);
 			// Only top screen enabled
 			if (nScreens == 1)
 			{
-				obscureCamera.y = _wHeight;
+				obscureCamera.y = wHeight;
 			}
 			else if (nScreens == 2)
 			{
-				obscureCamera.y = _wHeight * 2;				
+				obscureCamera.y = wHeight * 2;				
 			}
 			FlxG.cameras.add(obscureCamera);
 			// Place camera 'offscreen' so no sprites are drawn
@@ -166,7 +161,7 @@ class PlayState extends FlxState
 
 		if (_eplacer.enemiesDone())
 		{
-			this.subState = new LevelCompleteState(_lnum);
+			this.subState = new LevelCompleteState(levelNum);
 		}
 
 		super.update();

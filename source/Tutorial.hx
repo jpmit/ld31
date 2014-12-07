@@ -16,16 +16,16 @@ class Tutorial
 	//private static var _tutX:Int = 150;
 	//private static var _tutY:Int = 200;
 	
-	public static function setup(pstate:PlayState, lnum:Int):Void
+	public static function setup(pstate:PlayState):Void
 	{
 		// Add any text
-		if (_tutData.exists(lnum))
+		if (_tutData.exists(pstate.levelNum))
 		{
 			// Most recent time at which text disappeared
 			var lastTime:Float = 0;
 			// Current lines of text
 			var currentLines = 0;
-			for (t in _tutData[lnum])
+			for (t in _tutData[pstate.levelNum])
 			{
 				// Number of lines of text for this dialogue
 				var nlines = t.length - 2;

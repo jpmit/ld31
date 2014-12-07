@@ -24,7 +24,6 @@ class LevelCompleteState extends FlxSubState
 		_elapsed += FlxG.elapsed;
 
 		super.update();
-		trace(_elapsed);
 		if (_elapsed > 2)
 		{
 			close();
